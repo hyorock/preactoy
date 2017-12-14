@@ -3,7 +3,7 @@ import * as jwt from 'jsonwebtoken';
 import User from '../models/user';
 import { Fail, Success } from '../common/responseUtil';
 
-// const debug = require('debug')('server:auth');
+//const debug = require('debug')('server:auth');
 
 export async function Register(req, res) {
     let username = req.body.username;
@@ -56,6 +56,10 @@ export async function Login(req, res) {
 
     if (!user || !user.validateHash(password)) {
         throw Fail('login failed', 401);
+    } else {
+        await User.update({ username: username }, { $set: { blacklist: false }}, (err) => {
+            if(err) throw Fail('login failed', 401);
+        });
     }
 
     let token = jwt.sign({ id: user._id }, process.env.TOKEN_SECRET, {
@@ -66,9 +70,15 @@ export async function Login(req, res) {
 }
 
 export function Me(req, res) {
-    return Success(res);
+    return Success(res, { info: req.decoded });
 }
 
-export function Logout(req, res) {
-    return Success(res);
+export async function Logout(req, res) {
+    let username = req.body.username;
+
+    await User.update({ username: username }, { $set: { blacklist: true }}, (err) => {
+        if(err) throw Fail('logout failed', 401);
+    });
+
+    return Success(res, { info: req.decoded });
 }

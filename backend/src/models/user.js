@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const User = new Schema({
     username: String,
     password: String,
+    blacklist: { type: Boolean, default: false },
     createdAt: { type: Date, default: Date.now }
 });
 
