@@ -1,16 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import './Header.css';
 
-class Header extends React.Component {
-   render(){
-       return (
-           <div>
-            <h1>{ this.props.title }</h1>
-            <p><Link to="/">Home</Link></p>
-            <p><Link to="/about">About</Link></p>
-           </div>
-       );
-   }
-}
+const Header = () => {
+    return (
+        <div className="header">
+            <NavLink exact to="/" className="item" activeClassName="active">홈</NavLink>
+            <NavLink to="/about/hyorock" className="item" activeClassName="active">소개</NavLink>
+            <NavLink to="/posts" className="item" activeClassName="active">포스트</NavLink>
+            <NavLink to="/me" className="item" activeClassName="active">마이페이지</NavLink>
+            <NavLink to="/login" className="item" activeClassName="active">로그인</NavLink>
+            <NavLink to="/Search" className="item" activeClassName="active">검색</NavLink>
+            <NavLink to="/Baseballgame" className="item" activeClassName="active">숫자야구</NavLink>
+        </div>
+    );
+};
 
 export default Header;
