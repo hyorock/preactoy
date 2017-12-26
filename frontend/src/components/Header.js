@@ -12,6 +12,7 @@ const Header = () => {
             <NavLink to="/login" className="item" activeClassName="active">로그인</NavLink>
             <NavLink to="/Search" className="item" activeClassName="active">검색</NavLink>
             <NavLink to="/Baseballgame" className="item" activeClassName="active">숫자야구</NavLink>
+            <NavLink to="/Todolist" className="item" activeClassName="active">할일목록</NavLink>
         </div>
     );
 };

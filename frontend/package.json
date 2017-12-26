@@ -6,6 +6,7 @@
     "axios": "^0.17.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-flip-move": "^2.10.0",
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {

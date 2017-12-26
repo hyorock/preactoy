@@ -8,6 +8,7 @@ import Posts from './routes/Posts';
 import MyPage from './routes/MyPage';
 import Search from './routes/Search';
 import BaseballGame from './routes/BaseballGame';
+import Todolist from './routes/todolist/Todolist';
 import NoMatch from './routes/NoMatch';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
                     <Route path="/me" component={MyPage} />
                     <Route path="/search" component={Search} />
                     <Route path="/baseballgame" component={BaseballGame} />
+                    <Route path="/todolist" component={Todolist} />
                     <Route component={NoMatch} />
                 </Switch>
             </div>
