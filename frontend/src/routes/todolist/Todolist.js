@@ -13,6 +13,8 @@ class TodoList extends Component {
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.completeItem = this.completeItem.bind(this);
+        this.swapItem = this.swapItem.bind(this);
+        this.findItemIndexByKey = this.findItemIndexByKey.bind(this);
     }
 
     addItem(event) {
@@ -56,6 +58,30 @@ class TodoList extends Component {
         });
     }
 
+    swapItem(sourceItem, targetItem) {
+        let items = this.state.items;
+        let sourceIndex = this.findItemIndexByKey(this.state.items, sourceItem);
+        let targetIndex = this.findItemIndexByKey(this.state.items, targetItem);
+        let tempItem = {};
+
+        tempItem = items[sourceIndex];
+        items[sourceIndex] = items[targetIndex];
+        items[targetIndex] = tempItem;
+
+        this.setState({
+            items: this.state.items
+        });
+    }
+
+    findItemIndexByKey(array, text) {
+        for(let i = 0; i < array.length; i++) {
+            if(array[i].key === parseInt(text, 10)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     render() {
         return (
             <div className='todoListMain'>
@@ -69,7 +95,8 @@ class TodoList extends Component {
                 </div>
                 <TodoItems entries={this.state.items}
                             delete={this.deleteItem}
-                            complete={this.completeItem}/>
+                            complete={this.completeItem}
+                            swap={this.swapItem}/>
             </div>
         );
     }
