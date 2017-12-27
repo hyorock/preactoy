@@ -7,7 +7,7 @@
     padding: 10px;
     font-size: 16px;
     border: 2px solid rgb(33, 66, 252);
-    width: 165px;
+    width: 365px;
 }
 .todoListMain .todoheader button {
     padding: 10px;
@@ -26,7 +26,7 @@
 .todoListMain .theList {
     list-style: none;
     padding-left: 0;
-    width: 250px;
+    width: 400px;
 }
 .todoListMain .theList li {
     color: #333;
@@ -39,10 +39,11 @@
     transition: background-color .2s ease-out;
 }
 .todoListMain .theList li:hover {
-    background-color: greenyellow;
+    background-color: #fa6e6c;
     cursor: pointer;
 }
 .todoListMain .theList .todoComplete {
+    background-color: greenyellow;
     text-decoration: line-through;
     font-weight: bold;
     color: rgb(102, 102, 102);
